@@ -1,0 +1,23 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "hello-greet",
+    srcs = ["hello-greet.cc"],
+    hdrs = ["hello-greet.h"],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "hello-world",
+    srcs = [
+        "hello-world.cpp",
+    ],
+    deps = [
+        "hello-greet",
+        "//middle_shared",
+    ],
+    linkstatic = False,
+    size = "small",
+)

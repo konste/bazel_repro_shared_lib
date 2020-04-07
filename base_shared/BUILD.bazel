@@ -1,0 +1,13 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "base_shared",
+    srcs = [
+        "base_shared.cpp",
+    ],
+    hdrs = ["base_shared.h"],
+    includes = ["."], # This helps dependent libraries find this library header(s).
+    linkstatic = False,
+)
